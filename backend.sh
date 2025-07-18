@@ -39,51 +39,51 @@ CHECK_ROOT
 
 
 
-dnf module disable nodejs -y 
+dnf module disable nodejs -y &>>$LOG_FILE_NAME
 VALIDATE $? "Diable nodejs"
 
-dnf module enable nodejs:20 -y
+dnf module enable nodejs:20 -y &>>$LOG_FILE_NAME
 VALIDATE $? "enable nodejs"
 
-dnf install nodejs -y
+dnf install nodejs -y &>>$LOG_FILE_NAME
 VALIDATE $? "install nodejs"
 
-useradd expense
+useradd expense &>>$LOG_FILE_NAME
 VALIDATE $? "add user"
 
-mkdir /app
+mkdir /app &>>$LOG_FILE_NAME
 VALIDATE $? "create directory"
 
-curl -o /tmp/backend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip
+curl -o /tmp/backend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip &>>$LOG_FILE_NAME
 VALIDATE $? "Zip file"
 
 
-cd /app
+cd /app &>>$LOG_FILE_NAME
 VALIDATE $? "change direcotry"
 
-npm install
+npm install &>>$LOG_FILE_NAME
 VALIDATE $? "install dependices"
 
-cp /home/ec2-user/backend.service /etc/systemd/system/backend.service
+cp /home/ec2-user/backend.service /etc/systemd/system/backend.service &>>$LOG_FILE_NAME
 VALIDATE $? "add systemctl file"
 
 
-systemctl daemon-reload
+systemctl daemon-reload &>>$LOG_FILE_NAME
 VALIDATE $? "Reloaded modify file"
 
-systemctl start backend
+systemctl start backend &>>$LOG_FILE_NAME
 VALIDATE $? "systemctl start"
 
-systemctl enable backend
+systemctl enable backend &>>$LOG_FILE_NAME
 VALIDATE $? "enable systemctl"
 
 
-dnf install mysql -y
+dnf install mysql -y &>>$LOG_FILE_NAME
 VALIDATE $? "install mysql"
 
 
-mysql -h 172.31.27.20 -uroot -pExpenseApp@1 < /app/schema/backend.sql
+mysql -h 172.31.27.20 -uroot -pExpenseApp@1 < /app/schema/backend.sql &>>$LOG_FILE_NAME
 VALIDATE $? "connect mysql"
 
-systemctl restart backend
+systemctl restart backend &>>$LOG_FILE_NAME
 VALIDATE $? "systemctl restart"
