@@ -74,7 +74,7 @@ cd /app
 npm install &>>$LOG_FILE_NAME
 VALIDATE $? "install dependices"
 
-cp /home/ec2-user/expense-shell/shell-script/backend.service /etc/systemd/system/backend.service &>>$LOG_FILE_NAME
+cp /home/ec2-user/expense-shell/shell-script/backend.service /etc/systemd/system/backend.service -y &>>$LOG_FILE_NAME
 VALIDATE $? "add systemctl file"
 
 
