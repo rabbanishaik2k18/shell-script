@@ -66,7 +66,7 @@ VALIDATE $? "Zip file"
 
 cd /app
 
-unzip /tmp/backend.zip
+unzip /tmp/backend.zip &>>$LOG_FILE_NAME
 VALIDATE $? "unzip file"
 
 cd /app
@@ -74,7 +74,7 @@ cd /app
 npm install &>>$LOG_FILE_NAME
 VALIDATE $? "install dependices"
 
-cp /home/ec2-user/expense-shell/backend.service /etc/systemd/system/backend.service &>>$LOG_FILE_NAME
+cp /c/Users/rabba/devops/repos/expense-shell/shell-script/backend.service /etc/systemd/system/backend.service &>>$LOG_FILE_NAME
 VALIDATE $? "add systemctl file"
 
 
