@@ -49,16 +49,16 @@ dnf install nodejs -y &>>$LOG_FILE_NAME
 VALIDATE $? "install nodejs"
 
 useradd expense &>>$LOG_FILE_NAME
-if [ $? -ne 0 ]
-then 
-echo "add user : $useradd"
-VALIDATE $? "add user"
-else
-echo "user already added....skipping"
-fi
+# if [ $? -ne 0 ]
+# then 
+# echo "add user : $useradd"
+# VALIDATE $? "add user"
+# else
+# echo "user already added....skipping"
+# fi
+VALIDATE $? "added user"
 
-
-mkdir /app &>>$LOG_FILE_NAME
+mkdir -p /app &>>$LOG_FILE_NAME
 VALIDATE $? "create directory"
 
 curl -o /tmp/backend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip &>>$LOG_FILE_NAME
@@ -71,7 +71,7 @@ VALIDATE $? "change direcotry"
 npm install &>>$LOG_FILE_NAME
 VALIDATE $? "install dependices"
 
-cp /home/ec2-user/backend.service /etc/systemd/system/backend.service &>>$LOG_FILE_NAME
+cp /home/ec2-user/expense-shell/backend.service /etc/systemd/system/backend.service &>>$LOG_FILE_NAME
 VALIDATE $? "add systemctl file"
 
 
