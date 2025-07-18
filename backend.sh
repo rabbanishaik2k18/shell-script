@@ -70,11 +70,12 @@ unzip /tmp/backend.zip &>>$LOG_FILE_NAME
 VALIDATE $? "unzip file"
 
 cd /app
+rm -rf /app/*
 
 npm install &>>$LOG_FILE_NAME
 VALIDATE $? "install dependices"
 
-cp /home/ec2-user/shell-script/backend.service /etc/systemd/system/backend.service -y &>>$LOG_FILE_NAME
+cp /home/ec2-user/shell-script/backend.service /etc/systemd/system/backend.service &>>$LOG_FILE_NAME
 VALIDATE $? "add systemctl file"
 
 
