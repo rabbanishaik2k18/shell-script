@@ -49,6 +49,14 @@ dnf install nodejs -y &>>$LOG_FILE_NAME
 VALIDATE $? "install nodejs"
 
 useradd expense &>>$LOG_FILE_NAME
+if [ $? -ne 0]
+then 
+echo "add user : $useradd"
+VALIDATE $? "add user"
+else
+echo "user already added....skipping"
+fi
+
 VALIDATE $? "add user"
 
 mkdir /app &>>$LOG_FILE_NAME
