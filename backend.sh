@@ -64,8 +64,7 @@ curl -o /tmp/backend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expen
 VALIDATE $? "Zip file"
 
 
-cd /app &>>$LOG_FILE_NAME
-VALIDATE $? "change direcotry"
+cd /app
 
 npm install &>>$LOG_FILE_NAME
 VALIDATE $? "install dependices"
