@@ -66,6 +66,11 @@ VALIDATE $? "Zip file"
 
 cd /app
 
+unzip /tmp/backend.zip
+VALIDATE $? "unzip file"
+
+cd /app
+
 npm install &>>$LOG_FILE_NAME
 VALIDATE $? "install dependices"
 
