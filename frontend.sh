@@ -58,7 +58,7 @@ VALIDATE $? "moving html file"
 unzip /tmp/frontend.zip &>>$LOG_FILE_NAME
 VALIDATE $? "unzip the file"
 
-cp /home/ec-user/shell-script/expense.conf /etc/nginx/default.d/expense.conf &>>$LOG_FILE_NAME
+cp /home/ec2-user/shell-script/expense.conf /etc/nginx/default.d/expense.conf &>>$LOG_FILE_NAME
 VALIDATE $? "add config file"
 
 
