@@ -65,12 +65,12 @@ VALIDATE $? "Zip file"
 
 
 cd /app
+rm -rf /app/*
 
 unzip /tmp/backend.zip &>>$LOG_FILE_NAME
 VALIDATE $? "unzip file"
 
 cd /app
-rm -rf /app/*
 
 npm install &>>$LOG_FILE_NAME
 VALIDATE $? "install dependices"
