@@ -50,6 +50,7 @@ rm -rf /usr/share/nginx/html/* &>>$LOG_FILE_NAME
 VALIDATE $? "remove exists files"
 
 cd /usr/share/nginx/html &>>$LOG_FILE_NAME
+VALIDATE $? "moving html file"
 
 unzip /tmp/frontend.zip &>>$LOG_FILE_NAME
 VALIDATE $? "unzip the file"
