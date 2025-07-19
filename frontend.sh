@@ -37,26 +37,26 @@ fi
 
 CHECK_ROOT
 
-dnf install nginx -y 
+dnf install nginx -y &>>$LOG_FILE_NAME
 VALIDATE $? "install nginx"
 
-systemctl enable nginx
+systemctl enable nginx &>>$LOG_FILE_NAME
 VALIDATE $? "enable nginx"
 
-systemctl start nginx
+systemctl start nginx &>>$LOG_FILE_NAME
 VALIDATE $? "start nginx"
 
-rm -rf /usr/share/nginx/html/*
+rm -rf /usr/share/nginx/html/* &>>$LOG_FILE_NAME
 VALIDATE $? "remove exists files"
 
-cd /usr/share/nginx/html
+cd /usr/share/nginx/html &>>$LOG_FILE_NAME
 
-unzip /tmp/frontend.zip
+unzip /tmp/frontend.zip &>>$LOG_FILE_NAME
 VALIDATE $? "unzip the file"
 
-cp /home/ec-user/shell-script/expense.conf /etc/nginx/default.d/expense.conf
+cp /home/ec-user/shell-script/expense.conf /etc/nginx/default.d/expense.conf &>>$LOG_FILE_NAME
 VALIDATE $? "add config file"
 
 
-systemctl restart nginx
+systemctl restart nginx &>>$LOG_FILE_NAME
 VALIDATE $? "Restrat the server"
